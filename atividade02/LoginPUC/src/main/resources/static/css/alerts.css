@@ -1,0 +1,83 @@
+/* -------------------------------------------------------------------------
+   Mensagens de feedback (sucesso, erro, aviso, informacao).
+   Arquivo unico usado por todas as telas, para que o aviso tenha sempre
+   a mesma aparencia no login, no cadastro, na recuperacao e na home.
+   ------------------------------------------------------------------------- */
+
+.alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    text-align: left;
+    font-size: 0.85rem;
+    line-height: 1.35;
+    padding: 0.6rem 0.7rem;
+    border-radius: 6px;
+    border-left: 4px solid currentColor;
+    margin-bottom: 0.75rem;
+}
+
+.alert-icon {
+    flex-shrink: 0;
+    font-weight: bold;
+    line-height: 1.35;
+}
+
+.alert-text {
+    flex: 1;
+}
+
+/* Lista de mensagens dentro de um mesmo alerta (ex.: erros globais do form). */
+.alert-text p + p {
+    margin-top: 0.25rem;
+}
+
+.alert-close {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    color: inherit;
+    opacity: 0.6;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0;
+    cursor: pointer;
+}
+
+.alert-close:hover {
+    opacity: 1;
+}
+
+.alert-success {
+    color: #2E7D32;
+    background-color: #EAF5EB;
+}
+
+.alert-error {
+    color: #C62828;
+    background-color: #FDECEA;
+}
+
+.alert-warning {
+    color: #8A5300;
+    background-color: #FFF4E5;
+}
+
+.alert-info {
+    color: #3069AE;
+    background-color: #EAF1FA;
+}
+
+/* Mensagem de erro logo abaixo de um campo do formulario. */
+.field-error {
+    display: block;
+    color: #C62828;
+    font-size: 0.78rem;
+    margin: -0.25rem 0 0.5rem;
+    text-align: left;
+}
+
+/* Aplicada pelo th:errorclass quando o campo tem erro de validacao. */
+.input-error {
+    border-color: #C62828 !important;
+}

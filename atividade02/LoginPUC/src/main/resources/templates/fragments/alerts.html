@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<body>
+
+<!--
+  Fragmentos de mensagem reutilizados por todas as telas.
+  Uso:
+    <div th:replace="~{fragments/alerts :: alert('success', 'Tudo certo!')}"></div>
+    <div th:replace="~{fragments/alerts :: flash}"></div>
+    <div th:replace="~{fragments/alerts :: fieldError('email')}"></div>
+-->
+
+<!-- Um alerta. 'type' aceita: success, error, warning, info. -->
+<div th:fragment="alert(type, message)"
+     th:if="${message != null and !#strings.isEmpty(message)}"
+     th:classappend="'alert-' + ${type}"
+     class="alert"
+     th:attr="role=${type == 'error' ? 'alert' : 'status'},
+              aria-live=${type == 'error' ? 'assertive' : 'polite'}">
+    <span class="alert-icon" aria-hidden="true"
+          th:text="${type == 'success' ? '✓' : (type == 'error' ? '!' : (type == 'warning' ? '▲' : 'i'))}"></span>
+    <span class="alert-text" th:text="${message}"></span>
+    <button type="button" class="alert-close" aria-label="Fechar mensagem">&times;</button>
+</div>
+
+<!--
+  Atalho para as mensagens que os controllers colocam no Model/flash:
+  basta chamar 'flash' que success e error aparecem se existirem.
+-->
+<th:block th:fragment="flash">
+    <div th:replace="~{fragments/alerts :: alert('success', ${success})}"></div>
+    <div th:replace="~{fragments/alerts :: alert('error', ${error})}"></div>
+</th:block>
+
+<!--
+  Erro de um campo do formulario.
+  Precisa ser usado dentro de um <form th:object="...">, que e de onde
+  o Thymeleaf tira o contexto do #fields.
+-->
+<span th:fragment="fieldError(field)"
+      th:if="${#fields.hasErrors(field)}"
+      class="field-error"
+      role="alert"
+      th:text="${#strings.listJoin(#fields.errors(field), ' ')}"></span>
+
+<!-- Erros que nao pertencem a um campo especifico (rejectValue sem campo). -->
+<div th:fragment="globalErrors"
+     th:if="${#fields.hasGlobalErrors()}"
+     class="alert alert-error" role="alert">
+    <span class="alert-icon" aria-hidden="true">!</span>
+    <span class="alert-text">
+        <p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
+    </span>
+    <button type="button" class="alert-close" aria-label="Fechar mensagem">&times;</button>
+</div>
+
+</body>
+</html>

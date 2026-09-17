@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
     <link rel="stylesheet" th:href="@{/css/register.css}">
+    <link rel="stylesheet" th:href="@{/css/alerts.css}">
 </head>
 <body>
 <div class="register-screen-container">
@@ -15,28 +16,27 @@
         <form th:action="@{/register}" th:object="${usuario}" method="post" class="register-form">
             <h4 class="register-title">Cadastro</h4>
 
-            <div class="register-alert" th:if="${#fields.hasGlobalErrors()}">
-                <p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
-            </div>
+            <div th:replace="~{fragments/alerts :: flash}"></div>
+            <div th:replace="~{fragments/alerts :: globalErrors}"></div>
 
             <input type="text" th:field="*{username}" th:errorclass="input-error"
                    placeholder="Username" aria-label="Username" autocomplete="username" required>
-            <span class="error-message" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+            <span th:replace="~{fragments/alerts :: fieldError('username')}"></span>
 
             <input type="email" th:field="*{email}" th:errorclass="input-error"
                    placeholder="Email" aria-label="Email" autocomplete="email" required>
-            <span class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            <span th:replace="~{fragments/alerts :: fieldError('email')}"></span>
 
             <input type="password" th:field="*{password}" th:errorclass="input-error"
                    placeholder="Senha" aria-label="Senha" autocomplete="new-password" required>
-            <span class="error-message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+            <span th:replace="~{fragments/alerts :: fieldError('password')}"></span>
             <small class="register-hint">
                 Mínimo de 8 caracteres, com letra maiúscula, minúscula, número e caractere especial.
             </small>
 
             <input type="password" th:field="*{confirmPassword}" th:errorclass="input-error"
                    placeholder="Confirmar senha" aria-label="Confirmar senha" autocomplete="new-password" required>
-            <span class="error-message" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></span>
+            <span th:replace="~{fragments/alerts :: fieldError('confirmPassword')}"></span>
 
             <div class="register-button-container">
                 <button type="submit">Cadastrar</button>
@@ -49,5 +49,6 @@
         </form>
     </div>
 </div>
+<script th:src="@{/js/alerts.js}"></script>
 </body>
 </html>

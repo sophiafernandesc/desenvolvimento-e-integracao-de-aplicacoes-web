@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/alerts.css}">
 </head>
 <body>
 <div class="login-screen-container">
@@ -14,9 +15,17 @@
     <div class="login-form-container">
         <form th:action="@{/login}" method="post" class="login-form">
             <h4 class="login-title">Login</h4>
-            <p class="login-success" th:if="${success}" th:text="${success}"></p>
-            <p class="login-success" th:if="${param.logout}">Você saiu da sua conta.</p>
-            <p class="login-error" th:if="${param.error}">Usuário ou senha inválidos.</p>
+
+            <div th:replace="~{fragments/alerts :: flash}"></div>
+            <!-- O th:if precisa ficar numa tag externa: na mesma tag, o th:replace
+                 tem precedencia e substituiria o elemento antes de testar a condicao. -->
+            <th:block th:if="${param.logout}">
+                <div th:replace="~{fragments/alerts :: alert('info', 'Você saiu da sua conta.')}"></div>
+            </th:block>
+            <th:block th:if="${param.error}">
+                <div th:replace="~{fragments/alerts :: alert('error', 'Usuário ou senha inválidos.')}"></div>
+            </th:block>
+
             <input type="text" id="username" name="username" placeholder="Usuário ou email" required>
             <input type="password" id="password" name="password" placeholder="Senha" required>
             <div class="login-button-container">
@@ -30,5 +39,6 @@
         </form>
     </div>
 </div>
+<script th:src="@{/js/alerts.js}"></script>
 </body>
 </html>
