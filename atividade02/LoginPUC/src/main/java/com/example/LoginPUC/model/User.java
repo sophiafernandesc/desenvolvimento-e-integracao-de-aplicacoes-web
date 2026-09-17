@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -23,6 +24,15 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    // Token de uso único gerado ao solicitar a recuperação de senha.
+    // Fica nulo quando não há recuperação pendente.
+    @Column(name = "reset_token", unique = true)
+    private String resetToken;
+
+    // Instante em que o token acima deixa de ser válido.
+    @Column(name = "reset_token_expiry")
+    private LocalDateTime resetTokenExpiry;
 
     public Long getId() {
         return id;
@@ -54,5 +64,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
+
+    public LocalDateTime getResetTokenExpiry() {
+        return resetTokenExpiry;
+    }
+
+    public void setResetTokenExpiry(LocalDateTime resetTokenExpiry) {
+        this.resetTokenExpiry = resetTokenExpiry;
     }
 }

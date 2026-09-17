@@ -42,7 +42,11 @@ public class RegisterController {
         if (!result.hasFieldErrors("username") && userRepository.existsByUsername(dto.getUsername())) {
             result.rejectValue("username", "username.duplicate", "Este usuário já está em uso");
         }
-        if (!result.hasFieldErrors("email") && userRepository.existsByEmail(dto.getEmail())) {
+        // Normaliza para minúsculas: o email é a chave da recuperação de senha e
+        // precisa casar independentemente de como o usuário digitou.
+        String email = dto.getEmail() == null ? null : dto.getEmail().trim().toLowerCase();
+
+        if (!result.hasFieldErrors("email") && userRepository.existsByEmailIgnoreCase(email)) {
             result.rejectValue("email", "email.duplicate", "Este email já está cadastrado");
         }
 
@@ -52,7 +56,7 @@ public class RegisterController {
 
         User user = new User();
         user.setUsername(dto.getUsername());
-        user.setEmail(dto.getEmail());
+        user.setEmail(email);
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
         userRepository.save(user);
 

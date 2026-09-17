@@ -20,7 +20,7 @@ public class SecurityConfig {
         http
                 // Define quais rotas são públicas e quais exigem autenticação.
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/register", "/recoverpassword").permitAll()
+                        .requestMatchers("/login", "/register", "/recoverpassword", "/resetpassword").permitAll()
                         .requestMatchers("/css/**", "/images/**", "/js/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .anyRequest().authenticated()
