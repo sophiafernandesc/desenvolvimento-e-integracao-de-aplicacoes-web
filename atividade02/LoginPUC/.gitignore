@@ -24,3 +24,6 @@ data/
 
 ### macOS ###
 .DS_Store
+
+##email##
+application-local.properties
