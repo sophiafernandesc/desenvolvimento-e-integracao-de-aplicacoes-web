@@ -25,6 +25,9 @@
             <th:block th:if="${param.error}">
                 <div th:replace="~{fragments/alerts :: alert('error', 'Usuário ou senha inválidos.')}"></div>
             </th:block>
+            <th:block th:if="${param.expired}">
+                <div th:replace="~{fragments/alerts :: alert('warning', 'Sua senha foi alterada. Entre novamente com a nova senha.')}"></div>
+            </th:block>
 
             <input type="text" id="username" name="username" placeholder="Usuário ou email" required>
             <input type="password" id="password" name="password" placeholder="Senha" required>

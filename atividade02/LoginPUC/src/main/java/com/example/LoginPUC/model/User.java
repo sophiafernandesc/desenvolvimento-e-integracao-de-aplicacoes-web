@@ -25,14 +25,19 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    // Token de uso único gerado ao solicitar a recuperação de senha.
+    // Hash SHA-256 do token de recuperação. O token em si só existe dentro
+    // do email: quem ler o banco não consegue redefinir a senha de ninguém.
     // Fica nulo quando não há recuperação pendente.
-    @Column(name = "reset_token", unique = true)
-    private String resetToken;
+    @Column(name = "reset_token_hash", unique = true)
+    private String resetTokenHash;
 
-    // Instante em que o token acima deixa de ser válido.
+    // Instante em que o token deixa de ser válido.
     @Column(name = "reset_token_expiry")
     private LocalDateTime resetTokenExpiry;
+
+    // Quando o token foi gerado. Usado para recusar pedidos repetidos.
+    @Column(name = "reset_token_created_at")
+    private LocalDateTime resetTokenCreatedAt;
 
     public Long getId() {
         return id;
@@ -66,12 +71,12 @@ public class User {
         this.password = password;
     }
 
-    public String getResetToken() {
-        return resetToken;
+    public String getResetTokenHash() {
+        return resetTokenHash;
     }
 
-    public void setResetToken(String resetToken) {
-        this.resetToken = resetToken;
+    public void setResetTokenHash(String resetTokenHash) {
+        this.resetTokenHash = resetTokenHash;
     }
 
     public LocalDateTime getResetTokenExpiry() {
@@ -80,5 +85,13 @@ public class User {
 
     public void setResetTokenExpiry(LocalDateTime resetTokenExpiry) {
         this.resetTokenExpiry = resetTokenExpiry;
+    }
+
+    public LocalDateTime getResetTokenCreatedAt() {
+        return resetTokenCreatedAt;
+    }
+
+    public void setResetTokenCreatedAt(LocalDateTime resetTokenCreatedAt) {
+        this.resetTokenCreatedAt = resetTokenCreatedAt;
     }
 }
