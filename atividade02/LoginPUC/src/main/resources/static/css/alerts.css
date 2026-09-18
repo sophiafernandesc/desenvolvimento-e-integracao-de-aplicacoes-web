@@ -12,7 +12,7 @@
     font-size: 0.85rem;
     line-height: 1.35;
     padding: 0.6rem 0.7rem;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     border-left: 4px solid currentColor;
     margin-bottom: 0.75rem;
 }
@@ -49,29 +49,29 @@
 }
 
 .alert-success {
-    color: #2E7D32;
+    color: var(--success);
     background-color: #EAF5EB;
 }
 
 .alert-error {
-    color: #C62828;
+    color: var(--danger);
     background-color: #FDECEA;
 }
 
 .alert-warning {
-    color: #8A5300;
+    color: var(--warning);
     background-color: #FFF4E5;
 }
 
 .alert-info {
-    color: #3069AE;
-    background-color: #EAF1FA;
+    color: var(--brand);
+    background-color: var(--brand-soft);
 }
 
 /* Mensagem de erro logo abaixo de um campo do formulario. */
 .field-error {
     display: block;
-    color: #C62828;
+    color: var(--danger);
     font-size: 0.78rem;
     margin: -0.25rem 0 0.5rem;
     text-align: left;
@@ -79,5 +79,5 @@
 
 /* Aplicada pelo th:errorclass quando o campo tem erro de validacao. */
 .input-error {
-    border-color: #C62828 !important;
+    border-color: var(--danger) !important;
 }

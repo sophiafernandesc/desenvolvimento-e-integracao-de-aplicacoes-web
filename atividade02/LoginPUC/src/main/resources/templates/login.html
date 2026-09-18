@@ -3,43 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <title>Entrar · LoginPUC</title>
+    <link rel="stylesheet" th:href="@{/css/theme.css}">
     <link rel="stylesheet" th:href="@{/css/alerts.css}">
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
 </head>
 <body>
-<div class="login-screen-container">
-    <div class="login-image-logo-container">
-        <img th:src="@{/images/img-login2.jpeg}" alt="Imagem PUC Minas">
-    </div>
-    <div class="login-form-container">
-        <form th:action="@{/login}" method="post" class="login-form">
-            <h4 class="login-title">Login</h4>
+<div class="auth-shell">
+    <div class="auth-card">
 
-            <div th:replace="~{fragments/alerts :: flash}"></div>
-            <!-- O th:if precisa ficar numa tag externa: na mesma tag, o th:replace
-                 tem precedencia e substituiria o elemento antes de testar a condicao. -->
-            <th:block th:if="${param.logout}">
-                <div th:replace="~{fragments/alerts :: alert('info', 'Você saiu da sua conta.')}"></div>
-            </th:block>
-            <th:block th:if="${param.error}">
-                <div th:replace="~{fragments/alerts :: alert('error', 'Usuário ou senha inválidos.')}"></div>
-            </th:block>
-            <th:block th:if="${param.expired}">
-                <div th:replace="~{fragments/alerts :: alert('warning', 'Sua senha foi alterada. Entre novamente com a nova senha.')}"></div>
-            </th:block>
-
-            <input type="text" id="username" name="username" placeholder="Usuário ou email" required>
-            <input type="password" id="password" name="password" placeholder="Senha" required>
-            <div class="login-button-container">
-                <button type="submit">Entrar</button>
+        <aside class="auth-visual">
+            <img th:src="@{/images/img-login2.jpeg}" alt="">
+            <div class="auth-visual-content">
+                <p class="auth-visual-text">
+                    Entre com seu usuário ou email para acessar sua área.
+                </p>
             </div>
-            <p class="login-redirect-options">
-                Ainda não tem cadastro?<br>
-                <a th:href="@{/register}">Cadastre-se</a>
-                <a th:href="@{/recoverpassword}">Esqueceu sua senha?</a>
-            </p>
-        </form>
+        </aside>
+
+        <main class="auth-panel">
+            <form th:action="@{/login}" method="post" class="auth-form">
+                <header class="auth-header">
+                    <h1 class="auth-title">Entrar</h1>
+                    <p class="auth-subtitle">Use suas credenciais para continuar.</p>
+                </header>
+
+                <div th:replace="~{fragments/alerts :: flash}"></div>
+                <!-- O th:if precisa ficar numa tag externa: na mesma tag, o th:replace
+                     tem precedencia e substituiria o elemento antes de testar a condicao. -->
+                <th:block th:if="${param.logout}">
+                    <div th:replace="~{fragments/alerts :: alert('info', 'Você saiu da sua conta.')}"></div>
+                </th:block>
+                <th:block th:if="${param.error}">
+                    <div th:replace="~{fragments/alerts :: alert('error', 'Usuário ou senha inválidos.')}"></div>
+                </th:block>
+                <th:block th:if="${param.expired}">
+                    <div th:replace="~{fragments/alerts :: alert('warning', 'Sua senha foi alterada. Entre novamente com a nova senha.')}"></div>
+                </th:block>
+
+                <div class="field">
+                    <label class="field-label" for="username">Usuário ou email</label>
+                    <input class="field-input" type="text" id="username" name="username"
+                           placeholder="seu.usuario" autocomplete="username" required>
+                </div>
+
+                <div class="field">
+                    <label class="field-label" for="password">Senha</label>
+                    <input class="field-input" type="password" id="password" name="password"
+                           placeholder="••••••••" autocomplete="current-password" required>
+                </div>
+
+                <button type="submit" class="btn auth-submit">Entrar</button>
+
+                <p class="auth-footer">
+                    Ainda não tem cadastro?
+                    <a th:href="@{/register}">Cadastre-se</a><br>
+                    <a th:href="@{/recoverpassword}" class="auth-link-accent">Esqueceu sua senha?</a>
+                </p>
+            </form>
+        </main>
+
     </div>
 </div>
 <script th:src="@{/js/alerts.js}"></script>

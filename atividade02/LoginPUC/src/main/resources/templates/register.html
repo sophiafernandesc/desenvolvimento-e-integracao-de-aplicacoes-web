@@ -3,50 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Page</title>
-    <link rel="stylesheet" th:href="@{/css/register.css}">
+    <title>Criar conta · LoginPUC</title>
+    <link rel="stylesheet" th:href="@{/css/theme.css}">
     <link rel="stylesheet" th:href="@{/css/alerts.css}">
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
 </head>
 <body>
-<div class="register-screen-container">
-    <div class="register-image-logo-container">
-        <img th:src="@{/images/img-logo.jpeg}" alt="Logo PUC Minas">
-    </div>
-    <div class="register-form-container">
-        <form th:action="@{/register}" th:object="${usuario}" method="post" class="register-form">
-            <h4 class="register-title">Cadastro</h4>
+<div class="auth-shell">
+    <div class="auth-card">
 
-            <div th:replace="~{fragments/alerts :: flash}"></div>
-            <div th:replace="~{fragments/alerts :: globalErrors}"></div>
-
-            <input type="text" th:field="*{username}" th:errorclass="input-error"
-                   placeholder="Username" aria-label="Username" autocomplete="username" required>
-            <span th:replace="~{fragments/alerts :: fieldError('username')}"></span>
-
-            <input type="email" th:field="*{email}" th:errorclass="input-error"
-                   placeholder="Email" aria-label="Email" autocomplete="email" required>
-            <span th:replace="~{fragments/alerts :: fieldError('email')}"></span>
-
-            <input type="password" th:field="*{password}" th:errorclass="input-error"
-                   placeholder="Senha" aria-label="Senha" autocomplete="new-password" required>
-            <span th:replace="~{fragments/alerts :: fieldError('password')}"></span>
-            <small class="register-hint">
-                Mínimo de 8 caracteres, com letra maiúscula, minúscula, número e caractere especial.
-            </small>
-
-            <input type="password" th:field="*{confirmPassword}" th:errorclass="input-error"
-                   placeholder="Confirmar senha" aria-label="Confirmar senha" autocomplete="new-password" required>
-            <span th:replace="~{fragments/alerts :: fieldError('confirmPassword')}"></span>
-
-            <div class="register-button-container">
-                <button type="submit">Cadastrar</button>
+        <aside class="auth-visual">
+            <img th:src="@{/images/img-logo.jpeg}" alt="">
+            <div class="auth-visual-content">
+                <p class="auth-visual-title">Crie sua conta</p>
             </div>
+        </aside>
 
-            <p class="register-redirect-options">
-                Já tem uma conta?<br>
-                <a th:href="@{/login}">Voltar para o login</a>
-            </p>
-        </form>
+        <main class="auth-panel">
+            <form th:action="@{/register}" th:object="${usuario}" method="post" class="auth-form">
+                <header class="auth-header">
+                    <h1 class="auth-title">Cadastro</h1>
+                    <p class="auth-subtitle">Preencha os dados abaixo para começar.</p>
+                </header>
+
+                <div th:replace="~{fragments/alerts :: flash}"></div>
+                <div th:replace="~{fragments/alerts :: globalErrors}"></div>
+
+                <div class="field">
+                    <label class="field-label" for="username">Nome de usuário</label>
+                    <input class="field-input" type="text" id="username" th:field="*{username}"
+                           th:errorclass="input-error" placeholder="seu.usuario"
+                           autocomplete="username" required>
+                    <span th:replace="~{fragments/alerts :: fieldError('username')}"></span>
+                </div>
+
+                <div class="field">
+                    <label class="field-label" for="email">Email</label>
+                    <input class="field-input" type="email" id="email" th:field="*{email}"
+                           th:errorclass="input-error" placeholder="voce@exemplo.com"
+                           autocomplete="email" required>
+                    <span th:replace="~{fragments/alerts :: fieldError('email')}"></span>
+                </div>
+
+                <div class="field">
+                    <label class="field-label" for="password">Senha</label>
+                    <input class="field-input" type="password" id="password" th:field="*{password}"
+                           th:errorclass="input-error" placeholder="••••••••"
+                           autocomplete="new-password" required>
+                    <span th:replace="~{fragments/alerts :: fieldError('password')}"></span>
+                    <small class="field-hint">
+                        Mínimo de 8 caracteres, com maiúscula, minúscula, número e caractere especial.
+                    </small>
+                </div>
+
+                <div class="field">
+                    <label class="field-label" for="confirmPassword">Confirmar senha</label>
+                    <input class="field-input" type="password" id="confirmPassword"
+                           th:field="*{confirmPassword}" th:errorclass="input-error"
+                           placeholder="••••••••" autocomplete="new-password" required>
+                    <span th:replace="~{fragments/alerts :: fieldError('confirmPassword')}"></span>
+                </div>
+
+                <button type="submit" class="btn auth-submit">Cadastrar</button>
+
+                <p class="auth-footer">
+                    Já tem uma conta?
+                    <a th:href="@{/login}">Voltar para o login</a>
+                </p>
+            </form>
+        </main>
+
     </div>
 </div>
 <script th:src="@{/js/alerts.js}"></script>
