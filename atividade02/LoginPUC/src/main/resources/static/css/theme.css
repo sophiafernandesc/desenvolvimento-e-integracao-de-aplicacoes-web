@@ -138,6 +138,46 @@ a:hover {
     box-shadow: var(--ring);
 }
 
+/* Envolve o input quando ha um botao sobreposto (ver password-toggle.js). */
+.field-control {
+    position: relative;
+    display: block;
+}
+
+/* Espaco a direita para o texto nao passar por baixo do olhinho. */
+.field-control .field-input {
+    padding-right: 2.75rem;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    color: var(--ink-subtle);
+    background: none;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: color var(--transition), background-color var(--transition);
+}
+
+.password-toggle:hover {
+    color: var(--brand);
+    background-color: var(--brand-soft);
+}
+
+.password-toggle svg {
+    width: 1.15rem;
+    height: 1.15rem;
+}
+
 .field-hint {
     font-size: 0.75rem;
     color: var(--ink-subtle);
