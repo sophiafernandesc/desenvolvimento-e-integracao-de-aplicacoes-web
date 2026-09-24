@@ -1,0 +1,175 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f5f7;
+    color: #222;
+}
+
+/* ===== cabeçalho ===== */
+
+.cabecalho {
+    background-color: #1b3a6b;
+    color: #fff;
+    padding: 18px 32px;
+}
+
+.cabecalho h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* ===== conteudo===== */
+
+.conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+}
+
+/* ===== filtros ===== */
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 16px;
+    background-color: #fff;
+    border: 1px solid #dfe3e8;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo label {
+    font-size: 13px;
+    color: #555;
+}
+
+.campo input,
+.campo select {
+    height: 36px;
+    min-width: 180px;
+    padding: 0 8px;
+    font-size: 14px;
+    border: 1px solid #c4c9d0;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.acoes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.acoes button {
+    height: 36px;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #1b3a6b;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.acoes button:hover {
+    background-color: #16305a;
+}
+
+.limpar {
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #c4c9d0;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.limpar:hover {
+    background-color: #eef0f3;
+}
+
+/* ===== resultados ===== */
+
+.resultado-info {
+    margin: 20px 0 12px;
+    font-size: 14px;
+    color: #555;
+}
+
+.sem-resultado {
+    padding: 16px;
+    background-color: #fff;
+    border: 1px solid #dfe3e8;
+    border-radius: 8px;
+    color: #a3341f;
+}
+
+/* ===== cards ===== */
+
+.grade-candidatos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #dfe3e8;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.foto-candidato {
+    width: 100%;
+    aspect-ratio: 161 / 225;
+    object-fit: cover;
+    display: block;
+    background-color: #e8eaed;
+}
+
+.dados {
+    padding: 10px;
+}
+
+.dados p {
+    margin: 0 0 2px;
+    font-size: 11px;
+    color: #444;
+}
+
+.nome-urna {
+    margin: 0 0 4px;
+    font-size: 13px;
+    color: #1b3a6b;
+    text-transform: uppercase;
+}
+
+.numero {
+    font-size: 11px;
+}
+
+.cargo {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.nome-civil {
+    margin-top: 6px;
+    font-style: italic;
+    color: #666;
+}

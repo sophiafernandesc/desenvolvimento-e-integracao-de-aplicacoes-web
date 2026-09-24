@@ -33,14 +33,14 @@ public class CandidatosTseController {
         List<String> cargos = candidatosTseService.listarCargos();
         List<String> partidos = candidatosTseService.listarPartidos();
 
-        model.addAttribute("cargo", cargo);
-        model.addAttribute("partido", partido);
-        model.addAttribute("texto", texto);
+        model.addAttribute("cargoSelecionado", cargo);
+        model.addAttribute("partidoSelecionado", partido);
+        model.addAttribute("textoSelecionado", texto);
         model.addAttribute("totalEncontrado", totalEncontrado);
-        model.addAttribute("candidatos", candidatos);
         model.addAttribute("cargos", cargos);
         model.addAttribute("partidos", partidos);
-        return ("index");
+        model.addAttribute("candidatos", candidatos);
+        return"index";
     }
 
 }
