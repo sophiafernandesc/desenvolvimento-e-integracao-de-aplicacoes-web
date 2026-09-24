@@ -30,11 +30,16 @@ public class CandidatosTseController {
         texto = texto == null ? "" : texto;
         List<Candidato> candidatos = candidatosTseService.filtrar(cargo, partido, texto);
         int totalEncontrado = candidatos.size();
+        List<String> cargos = candidatosTseService.listarCargos();
+        List<String> partidos = candidatosTseService.listarPartidos();
 
         model.addAttribute("cargo", cargo);
         model.addAttribute("partido", partido);
         model.addAttribute("texto", texto);
         model.addAttribute("totalEncontrado", totalEncontrado);
+        model.addAttribute("candidatos", candidatos);
+        model.addAttribute("cargos", cargos);
+        model.addAttribute("partidos", partidos);
         return ("index");
     }
 
