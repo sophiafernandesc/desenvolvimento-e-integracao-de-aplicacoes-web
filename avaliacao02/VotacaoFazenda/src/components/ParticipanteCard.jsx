@@ -1,4 +1,4 @@
-function ParticipanteCard({ participante, onVotar }) {
+function ParticipanteCard({ participante, onVotar }) { //props desestruturado na assinatura
   const { nome, foto, naRoca } = participante;
 
   return (

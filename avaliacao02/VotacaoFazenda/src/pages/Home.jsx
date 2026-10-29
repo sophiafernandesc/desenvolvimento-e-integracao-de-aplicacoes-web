@@ -8,7 +8,7 @@ function Home() {
     <main className="home">
       <section className="home-hero">
         <figure className="fazendeiro">
-          <img src="/fazendeiro.jpg" alt="Fazendeiro João Paulo" />
+          <img src="/fazendeiro.jpg" alt="Fazendeiro João Paulo Aramuni de chapéu" />
           <figcaption>Fazendeiro João Paulo</figcaption>
         </figure>
 

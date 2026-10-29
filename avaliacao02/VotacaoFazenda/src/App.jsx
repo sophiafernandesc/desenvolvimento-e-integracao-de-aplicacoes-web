@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import Votacao from './pages/Votacao';
 import Resultado from './pages/Resultado';
 import './App.css';
-import {AiFillHeart} from "react-icons/ai";
 
 function App() {
     return (
