@@ -1,0 +1,248 @@
+.pagina {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 4vw, 3rem) 1.25rem 2rem;
+}
+
+.pagina-topo {
+    margin-bottom: 2rem;
+}
+
+.pagina-topo h1 {
+    color: var(--palha);
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-shadow: 0 3px 0 var(--madeira-escura);
+}
+
+.pagina-topo p {
+    margin: 0.4rem 0 0;
+    font-size: 1.05rem;
+    opacity: 0.9;
+}
+
+.total-votos strong {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: 2.4rem;
+    color: var(--palha);
+}
+
+.mensagem-voto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem 1.2rem;
+    background: var(--pasto);
+    color: #fff;
+    border-radius: 8px;
+}
+
+.mensagem-voto p {
+    margin: 0;
+}
+
+.mensagem-voto a {
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.grade-roca {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.grade-peoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 1rem;
+    margin-top: 1.2rem;
+}
+
+.demais {
+    margin-top: 3.5rem;
+}
+
+.demais h2 {
+    color: var(--palha);
+    font-size: 1.6rem;
+}
+
+.demais p {
+    margin: 0.3rem 0 0;
+    opacity: 0.85;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0.5rem 0.5rem 0.7rem;
+    background: #e8dcc0;
+    color: var(--tinta);
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.card-roca {
+    padding: 1rem 1.2rem 1.4rem;
+    background: var(--papel);
+    border: 4px solid var(--celeiro);
+    border-radius: 10px;
+    box-shadow: 0 0 0 4px var(--papel), 0 14px 30px rgba(0, 0, 0, 0.45);
+    transform: rotate(-1deg);
+}
+
+.card-roca:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.selo-roca {
+    position: absolute;
+    top: 1.3rem;
+    right: -0.6rem;
+    padding: 0.25rem 0.8rem;
+    background: var(--celeiro);
+    color: var(--papel);
+    font-family: var(--fonte-titulo);
+    font-size: 1.1rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
+    transform: rotate(6deg);
+}
+
+.card-foto {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.card-nome {
+    font-family: var(--fonte-texto);
+    font-weight: 800;
+    font-size: 0.95rem;
+}
+
+.card-roca .card-nome {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.card-botao {
+    width: 100%;
+}
+
+.resultado-vazio {
+    padding: 2rem 1.5rem;
+    background: var(--papel);
+    color: var(--tinta);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.resultado-vazio p {
+    margin: 0 0 1.2rem;
+    font-size: 1.05rem;
+}
+
+.placar {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+}
+
+.placar-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 0.8rem 1rem 0.8rem 0.8rem;
+    background: var(--papel);
+    color: var(--tinta);
+    border-radius: 8px;
+}
+
+.placar-lider {
+    border: 4px solid var(--celeiro);
+}
+
+.placar-foto {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.placar-nome {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+}
+
+.placar-nome h3 {
+    font-size: 1.5rem;
+}
+
+.selo-lider {
+    padding: 0.2rem 0.6rem;
+    background: var(--celeiro);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 800;
+    border-radius: 4px;
+}
+
+.barra {
+    height: 22px;
+    margin: 0.6rem 0;
+    background: #d8c7a5;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.barra-preenchida {
+    height: 100%;
+    background: var(--madeira);
+    border-radius: 999px;
+    transition: width 0.6s ease;
+}
+
+.placar-lider .barra-preenchida {
+    background: var(--celeiro);
+}
+
+.placar-numeros {
+    margin: 0;
+    font-weight: 800;
+}
+
+.botao-zerar {
+    margin-top: 2rem;
+    background: transparent;
+    color: var(--papel);
+    box-shadow: inset 0 0 0 2px var(--papel);
+}
+
+@media (max-width: 720px) {
+    .mensagem-voto {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .placar-item {
+        grid-template-columns: 1fr;
+    }
+
+    .card-roca,
+    .card-roca:nth-child(even) {
+        transform: none;
+    }
+}
